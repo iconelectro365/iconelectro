@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Menu {
+  id                 String   @id @default(cuid())
+  menuId             String   @unique
+  parentMenuId       String?
+  triggerText        String   @default("")
+  isMain             Boolean  @default(false)
+  displayText        String
+  buttons            String[] @default([])
+  nextAction         String   @default("show_menu")
+  dynamicCalcEnabled Boolean  @default(false)
+  dynamicCalcFormula String   @default("")
+  order              Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Pricing {
+  id          String @id @default(cuid())
+  capacity    String @unique
+  price       Int
+  subsidyInfo String @default("")
+}
+
+model Setting {
+  key   String @id
+  value Json
+}
+
+model User {
+  waId          String   @id
+  name          String?
+  phone         String?
+  address       String?
+  currentMenuId String   @default("main")
+  currentStep   String?
+  leadStatus    String   @default("new")
+  tempData      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  waId      String
+  name      String?
+  phone     String?
+  address   String?
+  leadType  String?
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
