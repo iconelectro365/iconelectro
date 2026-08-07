@@ -1,13 +1,20 @@
-import jwt from 'jsonwebtoken';
-const JWT_SECRET = process.env.NEXTAUTH_SECRET || 'fallback-secret';
+import { SignJWT, jwtVerify } from 'jose';
 
-export function signToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.NEXTAUTH_SECRET || 'fallback-secret'
+);
+
+export async function signToken(payload: object) {
+  return await new SignJWT(payload as any)
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('1d')
+    .sign(JWT_SECRET);
 }
 
-export function verifyToken(token: string) {
+export async function verifyToken(token: string) {
   try {
-    return jwt.verify(token, JWT_SECRET) as { username: string };
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return payload as { username: string };
   } catch {
     return null;
   }

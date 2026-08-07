@@ -52,7 +52,7 @@ w('package.json', `{
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.16",
-    "jsonwebtoken": "^9.0.2",
+    "jose": "^5.2.0",
     "lucide-react": "^0.294.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
@@ -64,7 +64,6 @@ w('package.json', `{
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -264,7 +263,7 @@ async function main() {
 }
 main().catch(e => console.error(e)).finally(() => prisma.$disconnect());`);
 
-// ==================== LIB FILES ====================
+// ==================== LIB FILES (UPDATED) ====================
 w('lib/utils.ts', `import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)) }`);
@@ -274,16 +273,24 @@ const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 export const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma`);
 
-w('lib/auth.ts', `import jwt from 'jsonwebtoken';
-const JWT_SECRET = process.env.NEXTAUTH_SECRET || 'fallback-secret';
+// ✅ Updated auth with jose
+w('lib/auth.ts', `import { SignJWT, jwtVerify } from 'jose';
 
-export function signToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.NEXTAUTH_SECRET || 'fallback-secret'
+);
+
+export async function signToken(payload: object) {
+  return await new SignJWT(payload as any)
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('1d')
+    .sign(JWT_SECRET);
 }
 
-export function verifyToken(token: string) {
+export async function verifyToken(token: string) {
   try {
-    return jwt.verify(token, JWT_SECRET) as { username: string };
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return payload as { username: string };
   } catch {
     return null;
   }
@@ -1257,8 +1264,8 @@ export async function POST(req: NextRequest) {
 }
 
 async function handleMessage(input: string, from: string, user: any, menu: any) {
-const raw = (await prisma.setting.findUnique({ where: { key: 'invalid_option' } }))?.value;
-const invalidMsg: string = typeof raw === 'string' ? raw : '❌ দুঃখিত! অনুগ্রহ করে সঠিক অপশন নির্বাচন করুন।';
+const setting = await prisma.setting.findUnique({ where: { key: 'invalid_option' } });
+const invalidMsg: string = (setting?.value as string) || '❌ দুঃখিত! অনুগ্রহ করে সঠিক অপশন নির্বাচন করুন।';
   switch (menu.nextAction) {
     case 'show_menu':
     case 'await_input': {
