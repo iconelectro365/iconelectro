@@ -55,7 +55,7 @@ const invalidMsg: string = (setting?.value as string) || '❌ দুঃখিত
         await prisma.user.update({ where: { waId: from }, data: { currentMenuId: subMenu.menuId, currentStep: null } });
         await sendMenuMessage(from, subMenu);
       } else {
-        await sendWhatsAppMessage(from, invalidMsg as string);s
+        await sendWhatsAppMessage(from, invalidMsg as string);
         await sendMenuMessage(from, menu);
       }
       break;

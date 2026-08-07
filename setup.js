@@ -711,7 +711,7 @@ export default function Dashboard() {
         ))}
       </div>
     </div>
-  );
+  );s
 }`);
 
 w('app/menus/page.tsx', `'use client';
