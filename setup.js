@@ -1257,8 +1257,8 @@ export async function POST(req: NextRequest) {
 }
 
 async function handleMessage(input: string, from: string, user: any, menu: any) {
-  const invalidMsg = (await prisma.setting.findUnique({ where: { key: 'invalid_option' } }))?.value || '❌ দুঃখিত! অনুগ্রহ করে সঠিক অপশন নির্বাচন করুন।';
-
+const raw = (await prisma.setting.findUnique({ where: { key: 'invalid_option' } }))?.value;
+const invalidMsg: string = typeof raw === 'string' ? raw : '❌ দুঃখিত! অনুগ্রহ করে সঠিক অপশন নির্বাচন করুন।';
   switch (menu.nextAction) {
     case 'show_menu':
     case 'await_input': {
@@ -1281,7 +1281,7 @@ async function handleMessage(input: string, from: string, user: any, menu: any) 
         await prisma.user.update({ where: { waId: from }, data: { currentMenuId: subMenu.menuId, currentStep: null } });
         await sendMenuMessage(from, subMenu);
       } else {
-        await sendWhatsAppMessage(from, invalidMsg);
+        await sendWhatsAppMessage(from, invalidMsg as string);s
         await sendMenuMessage(from, menu);
       }
       break;
