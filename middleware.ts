@@ -1,10 +1,8 @@
-// middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 export async function middleware(req: NextRequest) {
-  // Login route-এর জন্য middleware skip
   if (req.nextUrl.pathname === '/api/admin/auth/login') {
     return NextResponse.next();
   }

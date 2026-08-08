@@ -1268,7 +1268,6 @@ w('app/api/admin/menus/route.ts', `import { NextRequest, NextResponse } from 'ne
 import { prisma } from '@/lib/prisma';
 export async function GET() { const menus = await prisma.menu.findMany({ orderBy: { order: 'asc' } }); return NextResponse.json(menus); }
 export async function POST(req: NextRequest) { const data = await req.json(); const menu = await prisma.menu.create({ data }); return NextResponse.json(menu, { status: 201 }); }
-// Reorder endpoint separate
 `);
 
 w('app/api/admin/menus/reorder/route.ts', `import { NextRequest, NextResponse } from 'next/server';
@@ -1407,6 +1406,10 @@ import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 export async function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname === '/api/admin/auth/login') {
+    return NextResponse.next();
+  }
+
   const authHeader = req.headers.get('authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return new NextResponse(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
@@ -1430,7 +1433,11 @@ export const config = {
   matcher: '/api/admin/:path*',
 };`);
 
-// ==================== LANDING PAGE (PUBLIC) ====================
+// ==================== PLACEHOLDER LOGO SVG ====================
+w('public/logo.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="#f97316"/><text x="50" y="65" font-size="50" fill="white" text-anchor="middle" font-family="Arial" font-weight="bold">⚡</text></svg>`);
+
+// ==================== PUBLIC LANDING PAGE ====================
+// (Full landing page HTML as before, compact but complete)
 w('public/index.html', `<!DOCTYPE html>
 <html lang="en" class="light" data-theme="light">
 <head>
@@ -1445,40 +1452,6 @@ w('public/index.html', `<!DOCTYPE html>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <style>
-        :root{--bg:#fafafa;--bg-secondary:#f5f5f5;--text:#18181b;--text-secondary:#52525b;--surface:#fff;--border:#e4e4e7;--ring:#f97316;--accent:#f97316;--accent-hover:#ea580c;--glass-bg:rgba(255,255,255,0.72);--glass-border:rgba(0,0,0,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -2px rgba(0,0,0,0.05);--card-hover-shadow:0 25px 50px -12px rgba(0,0,0,0.15)}.dark{--bg:#09090b;--bg-secondary:#121212;--text:#fafafa;--text-secondary:#a1a1aa;--surface:#18181b;--border:#27272a;--ring:#fb923c;--accent:#fb923c;--accent-hover:#fdba74;--glass-bg:rgba(24,24,27,0.75);--glass-border:rgba(255,255,255,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.3),0 2px 4px -2px rgba(0,0,0,0.3);--card-hover-shadow:0 25px 50px -12px rgba(249,115,22,0.15)}body{background-color:var(--bg);color:var(--text);transition:background-color 0.4s ease,color 0.4s ease;font-family:'Inter',system-ui,sans-serif;margin:0;overflow-x:hidden;line-height:1.6}.glass{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border)}.gradient-text{background:linear-gradient(135deg,#f97316,#fb923c 40%,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.card-premium{transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid var(--border);background:var(--surface);box-shadow:var(--card-shadow);border-radius:1rem}.card-premium:hover{transform:translateY(-8px);box-shadow:var(--card-hover-shadow);border-color:var(--ring)}.banner-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);background-size:cover;background-position:center;z-index:0}.banner-slide.active{opacity:1;z-index:1}.banner-slide::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:1}.banner-content{position:relative;z-index:2}.banner-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s ease;border:2px solid transparent}.banner-dot.active{background:#f97316;border-color:#fff;width:36px;border-radius:20px}
-    </style>
-</head>
-<body class="antialiased">
-    <!-- Your existing landing page HTML (same as before) goes here, I kept it short for brevity -->
-</body>
-</html>`);
-
-// Note: The full landing page HTML is quite large, I'll insert the same content from earlier but compressed.
-// For production, you can replace with the full HTML from the previous answer. I'll provide a compact version that works.
-// (I'll append the full landing page code at the end as it's essential)
-const landingPageHTML = `<!DOCTYPE html>
-<html lang="en" class="light" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="iconelectro – Smart Solar Energy Solutions. Residential, Commercial & Industrial. Save up to 80% on electricity bills with Tier-1 solar panels.">
-    <meta name="theme-color" content="#f97316">
-    <meta name="keywords" content="solar panels Kolkata, solar energy, residential solar, commercial solar, industrial solar, iconelectro, solar installation, solar pricing, solar calculator, government solar subsidy India">
-    <meta property="og:title" content="iconelectro – Smart Solar Energy">
-    <meta property="og:description" content="Power your future with smart solar solutions. Tier-1 panels, 25-year warranty.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=630&fit=crop">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iconelectro.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://iconelectro.com">
-    <title>iconelectro – Smart Solar Energy | Residential, Commercial & Industrial Solar Solutions</title>
-    <script src="https://cdn.tailwindcss.com"><\/script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']},colors:{solar:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12',950:'#431407'}}}}}</script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"><\/script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"><\/script>
     <style>
         :root{--bg:#fafafa;--bg-secondary:#f5f5f5;--text:#18181b;--text-secondary:#52525b;--surface:#fff;--border:#e4e4e7;--ring:#f97316;--accent:#f97316;--accent-hover:#ea580c;--glass-bg:rgba(255,255,255,0.72);--glass-border:rgba(0,0,0,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -2px rgba(0,0,0,0.05);--card-hover-shadow:0 25px 50px -12px rgba(0,0,0,0.15)}.dark{--bg:#09090b;--bg-secondary:#121212;--text:#fafafa;--text-secondary:#a1a1aa;--surface:#18181b;--border:#27272a;--ring:#fb923c;--accent:#fb923c;--accent-hover:#fdba74;--glass-bg:rgba(24,24,27,0.75);--glass-border:rgba(255,255,255,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.3),0 2px 4px -2px rgba(0,0,0,0.3);--card-hover-shadow:0 25px 50px -12px rgba(249,115,22,0.15)}body{background-color:var(--bg);color:var(--text);transition:background-color 0.4s ease,color 0.4s ease;font-family:'Inter',system-ui,sans-serif;margin:0;overflow-x:hidden;line-height:1.6}.glass{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border)}.gradient-text{background:linear-gradient(135deg,#f97316,#fb923c 40%,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.card-premium{transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid var(--border);background:var(--surface);box-shadow:var(--card-shadow);border-radius:1rem}.card-premium:hover{transform:translateY(-8px);box-shadow:var(--card-hover-shadow);border-color:var(--ring)}.banner-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);background-size:cover;background-position:center;z-index:0}.banner-slide.active{opacity:1;z-index:1}.banner-slide::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:1}.banner-content{position:relative;z-index:2}.banner-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s ease;border:2px solid transparent}.banner-dot.active{background:#f97316;border-color:#fff;width:36px;border-radius:20px}
     </style>
@@ -1964,8 +1937,7 @@ const landingPageHTML = `<!DOCTYPE html>
         })();
     </script>
 </body>
-</html>`;
-w('public/index.html', landingPageHTML);
+</html>`);
 
 console.log('✅ All files generated successfully!');
 console.log('');
