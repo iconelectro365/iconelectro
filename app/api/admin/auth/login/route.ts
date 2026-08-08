@@ -9,6 +9,6 @@ export async function POST(req: NextRequest) {
   if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
-  const token = await signToken({ username });  // signToken returns Promise
+  const token = await signToken({ username });
   return NextResponse.json({ token });
 }

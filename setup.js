@@ -1,14 +1,5 @@
 // setup.js — Complete Production‑Ready Generator for iconelectro Solar
-// This script creates a Next.js project with:
-//   • Public landing page (served from public/index.html)
-//   • Admin panel at /admin (with auth, sidebar, dark/light mode)
-//   • WhatsApp chatbot webhook at /api/webhook
-//   • Prisma + PostgreSQL backend, fully customisable menus/pricing/settings/leads
-//   • Responsive, enhanced UI using Tailwind, Radix UI, Framer Motion, etc.
-//
-// Run: node setup.js
-// Then: npm install && npx prisma generate && npx prisma db push && npm run db:seed && npm run dev
-
+// (all previous content + the fix for next-env.d.ts)
 const fs = require('fs');
 const path = require('path');
 
@@ -166,6 +157,11 @@ w('tsconfig.json', `{
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }`);
+
+// ==================== MISSING FILE: next-env.d.ts (FIX) ====================
+w('next-env.d.ts', `/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+`);
 
 // ==================== Prisma schema ====================
 w('prisma/schema.prisma', `generator client {
@@ -488,7 +484,6 @@ export const useAuth = () => useContext(AuthContext);`);
 
 // ==================== UI COMPONENTS ====================
 const ui = (name, content) => w(`components/ui/${name}.tsx`, content);
-
 ui('button', `import * as React from "react"; import { Slot } from "@radix-ui/react-slot"; import { cva, type VariantProps } from "class-variance-authority"; import { cn } from "@/lib/utils";
 const buttonVariants = cva("inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",{variants:{variant:{default:"bg-solar-500 text-white shadow hover:bg-solar-600",destructive:"bg-red-500 text-white shadow-sm hover:bg-red-600",outline:"border border-gray-300 dark:border-gray-700 bg-transparent shadow-sm hover:bg-gray-100 dark:hover:bg-gray-800",secondary:"bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700",ghost:"hover:bg-gray-100 dark:hover:bg-gray-800",link:"text-solar-500 underline-offset-4 hover:underline"},size:{default:"h-9 px-4 py-2",sm:"h-8 rounded-md px-3 text-xs",lg:"h-10 rounded-md px-8",icon:"h-9 w-9"}},defaultVariants:{variant:"default",size:"default"}});
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> { asChild?: boolean }
@@ -573,7 +568,6 @@ function Badge({ className, variant, ...props }: BadgeProps) { return <div class
 export { Badge, badgeVariants };`);
 
 // ==================== ADMIN LAYOUT & PAGES ====================
-// Admin layout with sidebar and auth guard
 w('app/admin/layout.tsx', `'use client';
 import Sidebar from '@/components/layout/Sidebar';
 import { useAuth } from '@/context/AuthContext';
@@ -591,7 +585,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   }, [token, pathname, router]);
 
-  if (!token) return null; // while redirecting
+  if (!token) return null;
 
   return (
     <div className="flex h-screen">
@@ -601,7 +595,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   );
 }`);
 
-// Admin Dashboard page (moved from root)
 w('app/admin/page.tsx', `'use client';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
@@ -644,7 +637,6 @@ export default function Dashboard() {
   );
 }`);
 
-// Admin Menus page (moved)
 w('app/admin/menus/page.tsx', `'use client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
@@ -737,7 +729,6 @@ export default function MenusPage() {
   );
 }`);
 
-// Menu edit page
 w('app/admin/menus/[id]/page.tsx', `'use client';
 import { useRouter, useParams } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -875,7 +866,6 @@ export default function MenuFormPage() {
   );
 }`);
 
-// Admin Pricing page
 w('app/admin/pricing/page.tsx', `'use client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
@@ -945,7 +935,6 @@ export default function PricingPage() {
   );
 }`);
 
-// Admin Leads page
 w('app/admin/leads/page.tsx', `'use client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
@@ -1001,7 +990,6 @@ export default function LeadsPage() {
   );
 }`);
 
-// Admin Settings page
 w('app/admin/settings/page.tsx', `'use client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
@@ -1078,8 +1066,7 @@ export default function SettingsPage() {
   );
 }`);
 
-// ==================== AUTH PAGES (public) ====================
-// Login page (outside admin)
+// ==================== AUTH PAGES ====================
 w('app/login/page.tsx', `'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -1142,7 +1129,7 @@ export default function LoginPage() {
   );
 }`);
 
-// ==================== ROOT LAYOUT (public, no sidebar) ====================
+// ==================== ROOT LAYOUT ====================
 w('app/layout.tsx', `import './globals.css';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import Providers from '@/components/Providers';
@@ -1213,7 +1200,6 @@ export default function Sidebar() {
 }`);
 
 // ==================== API ROUTES ====================
-// Auth
 w('app/api/admin/auth/login/route.ts', `import { NextRequest, NextResponse } from 'next/server';
 import { signToken } from '@/lib/auth';
 
@@ -1225,7 +1211,7 @@ export async function POST(req: NextRequest) {
   if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
-  const token = await signToken({ username });  // signToken returns Promise
+  const token = await signToken({ username });
   return NextResponse.json({ token });
 }`);
 
@@ -1384,7 +1370,7 @@ async function handleMessage(input: string, from: string, user: any, menu: any) 
   }
 }`);
 
-// ==================== MIDDLEWARE (protects /api/admin routes) ====================
+// ==================== MIDDLEWARE ====================
 w('middleware.ts', `import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
@@ -1414,7 +1400,6 @@ export const config = {
 };`);
 
 // ==================== PUBLIC LANDING PAGE ====================
-// (The complete HTML landing page as provided, saved to public/index.html)
 w('public/index.html', `<!DOCTYPE html>
 <html lang="en" class="light" data-theme="light">
 <head>
@@ -1436,7 +1421,7 @@ w('public/index.html', `<!DOCTYPE html>
     <title>iconelectro – Smart Solar Energy | Residential, Commercial & Industrial Solar Solutions</title>
 
     <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"><\/script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -1548,7 +1533,7 @@ w('public/index.html', `<!DOCTYPE html>
                 }
             }
         }
-    </script>
+    <\/script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1556,11 +1541,11 @@ w('public/index.html', `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest"><\/script>
 
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"><\/script>
 
     <style>
         :root {
@@ -2652,7 +2637,7 @@ w('public/index.html', `<!DOCTYPE html>
 </html>`);
 
 // ==================== FINAL INSTRUCTION ====================
-console.log('🎉 All files generated!');
+console.log('🎉 All files generated! (including missing next-env.d.ts)');
 console.log('');
 console.log('Next steps:');
 console.log('1. npm install');

@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   }, [token, pathname, router]);
 
-  if (!token) return null; // while redirecting
+  if (!token) return null;
 
   return (
     <div className="flex h-screen">
