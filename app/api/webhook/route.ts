@@ -55,7 +55,7 @@ async function handleMessage(input: string, from: string, user: any, menu: any) 
         await prisma.user.update({ where: { waId: from }, data: { currentMenuId: subMenu.menuId, currentStep: null } });
         await sendMenuMessage(from, subMenu);
       } else {
-        await sendWhatsAppMessage(from, invalidMsg as string);
+        await sendWhatsAppMessage(from, invalidMsg);
         await sendMenuMessage(from, menu);
       }
       break;

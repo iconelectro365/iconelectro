@@ -12,8 +12,8 @@
   --ring: #f97316;
   --accent: #f97316;
   --accent-hover: #ea580c;
-  --glass-bg: rgba(255,255,255,0.85);
-  --glass-border: rgba(0,0,0,0.08);
+  --glass-bg: rgba(255,255,255,0.72);
+  --glass-border: rgba(0,0,0,0.06);
 }
 
 .dark {
