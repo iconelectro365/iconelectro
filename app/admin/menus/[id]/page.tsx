@@ -67,7 +67,7 @@ export default function MenuFormPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['menus'] });
       toast.success(isNew ? 'Menu created' : 'Menu updated');
-      router.push('/menus');
+      router.push('/admin/menus');
     },
     onError: (err: any) => toast.error(err.response?.data?.error || 'Error saving'),
   });
@@ -93,7 +93,7 @@ export default function MenuFormPage() {
         </div>
         <div><Label>Display Text</Label><Textarea {...register('displayText',{required:true})} rows={6} /></div>
         <div>
-          <Label>Buttons (enter each on new line in display, store as array)</Label>
+          <Label>Buttons</Label>
           {fields.map((field, index) => (
             <div key={field.id} className="flex gap-2 mb-2">
               <Input {...register(`buttons.${index}.value`)} placeholder="Button label" />

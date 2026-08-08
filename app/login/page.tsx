@@ -28,7 +28,7 @@ export default function LoginPage() {
       const data = await res.json();
       login(data.token);
       toast.success('Logged in successfully');
-      router.push('/');
+      router.push('/admin');
     } catch (err: any) {
       toast.error(err.message || 'Login failed');
     } finally {

@@ -8,11 +8,11 @@ import { useTheme } from 'next-themes';
 import { useAuth } from '@/context/AuthContext';
 
 const navItems = [
-  { href:'/', label:'Dashboard', icon:LayoutDashboard },
-  { href:'/menus', label:'Menu Builder', icon:Menu },
-  { href:'/pricing', label:'Pricing', icon:DollarSign },
-  { href:'/leads', label:'Leads', icon:Users },
-  { href:'/settings', label:'Settings', icon:Settings },
+  { href:'/admin', label:'Dashboard', icon:LayoutDashboard },
+  { href:'/admin/menus', label:'Menu Builder', icon:Menu },
+  { href:'/admin/pricing', label:'Pricing', icon:DollarSign },
+  { href:'/admin/leads', label:'Leads', icon:Users },
+  { href:'/admin/settings', label:'Settings', icon:Settings },
 ];
 
 export default function Sidebar() {

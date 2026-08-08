@@ -28,7 +28,7 @@ function SortableItem({ menu, onDelete }: any) {
         <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{menu.displayText.slice(0,60)}</p>
       </div>
       <div className="flex gap-2">
-        <Link href={`/menus/${menu.id}`}><Button size="sm" variant="outline"><Edit className="w-4 h-4" /></Button></Link>
+        <Link href={`/admin/menus/${menu.id}`}><Button size="sm" variant="outline"><Edit className="w-4 h-4" /></Button></Link>
         <Button size="sm" variant="destructive" onClick={() => onDelete(menu.id)}><Trash className="w-4 h-4" /></Button>
       </div>
     </div>
@@ -77,7 +77,7 @@ export default function MenusPage() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">🔀 Menu Builder</h2>
-        <Link href="/menus/new"><Button><Plus className="w-4 h-4 mr-2" /> Add Menu</Button></Link>
+        <Link href="/admin/menus/new"><Button><Plus className="w-4 h-4 mr-2" /> Add Menu</Button></Link>
       </div>
       {isLoading ? <p>Loading...</p> : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
