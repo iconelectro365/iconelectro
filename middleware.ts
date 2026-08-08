@@ -1,8 +1,14 @@
+// middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 export async function middleware(req: NextRequest) {
+  // Login route-এর জন্য middleware skip
+  if (req.nextUrl.pathname === '/api/admin/auth/login') {
+    return NextResponse.next();
+  }
+
   const authHeader = req.headers.get('authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return new NextResponse(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
