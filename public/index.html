@@ -6,171 +6,36 @@
     <meta name="description" content="iconelectro – Smart Solar Energy Solutions. Residential, Commercial & Industrial. Save up to 80% on electricity bills with Tier-1 solar panels.">
     <meta name="theme-color" content="#f97316">
     <meta name="keywords" content="solar panels Kolkata, solar energy, residential solar, commercial solar, industrial solar, iconelectro, solar installation, solar pricing, solar calculator, government solar subsidy India">
-    <meta property="og:title" content="iconelectro – Smart Solar Energy | Residential, Commercial & Industrial">
-    <meta property="og:description" content="Power your future with smart solar solutions. Tier-1 panels, 25-year warranty. Save up to 80% on electricity bills.">
+    <meta property="og:title" content="iconelectro – Smart Solar Energy">
+    <meta property="og:description" content="Power your future with smart solar solutions. Tier-1 panels, 25-year warranty.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=630&fit=crop">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iconelectro.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="iconelectro – Smart Solar Energy">
-    <meta name="twitter:description" content="Power your future with smart solar solutions. Tier-1 panels, 25-year warranty.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=630&fit=crop">
     <link rel="canonical" href="https://iconelectro.com">
     <title>iconelectro – Smart Solar Energy | Residential, Commercial & Industrial Solar Solutions</title>
-
-    <!-- Tailwind CDN (only for public landing page, not Next.js) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'display': ['Space Grotesk', 'Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        solar: {
-                            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74',
-                            400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c',
-                            800: '#9a3412', 900: '#7c2d12', 950: '#431407',
-                        },
-                        surface: { light: '#fafafa', dark: '#09090b' },
-                        card: { light: '#ffffff', dark: '#18181b' },
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-soft': 'pulseSoft 2.5s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
-                        pulseSoft: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.8' } },
-                    },
-                    boxShadow: {
-                        'glow': '0 0 40px -10px rgba(249,115,22,0.4)',
-                        'glow-lg': '0 0 80px -20px rgba(249,115,22,0.5)',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']},colors:{solar:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12',950:'#431407'}}}}}</script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <style>
-        :root {
-            --bg: #fafafa; --bg-secondary: #f5f5f5; --text: #18181b; --text-secondary: #52525b;
-            --surface: #ffffff; --border: #e4e4e7; --ring: #f97316; --accent: #f97316; --accent-hover: #ea580c;
-            --glass-bg: rgba(255,255,255,0.72); --glass-border: rgba(0,0,0,0.06);
-            --drawer-bg: #ffffff; --badge-bg: rgba(249,115,22,0.1); --badge-text: #f97316;
-            --banner-overlay: rgba(0,0,0,0.35); --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
-            --card-hover-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); --input-bg: #ffffff; --footer-bg: #fafafa;
-            --section-alt-bg: #f8fafc; --calc-bg: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
-        }
-        .dark {
-            --bg: #09090b; --bg-secondary: #121212; --text: #fafafa; --text-secondary: #a1a1aa;
-            --surface: #18181b; --border: #27272a; --ring: #fb923c; --accent: #fb923c; --accent-hover: #fdba74;
-            --glass-bg: rgba(24,24,27,0.75); --glass-border: rgba(255,255,255,0.06);
-            --drawer-bg: #18181b; --badge-bg: rgba(251,146,60,0.15); --badge-text: #fb923c;
-            --banner-overlay: rgba(0,0,0,0.55); --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.3);
-            --card-hover-shadow: 0 25px 50px -12px rgba(249,115,22,0.15); --input-bg: #1c1c1f; --footer-bg: #09090b;
-            --section-alt-bg: #0a0a0e; --calc-bg: linear-gradient(135deg, #1a1008 0%, #1c1209 50%, #1a1008 100%);
-        }
-        * { scroll-behavior: smooth; box-sizing: border-box; }
-        body {
-            background-color: var(--bg); color: var(--text); transition: background-color 0.4s ease, color 0.4s ease;
-            font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; margin: 0; overflow-x: hidden; line-height: 1.6;
-        }
-        #calculator { background: var(--calc-bg); }
-        .glass { background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); }
-        .gradient-text { background: linear-gradient(135deg, #f97316 0%, #fb923c 40%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .card-premium { transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94); border: 1px solid var(--border); background: var(--surface); box-shadow: var(--card-shadow); border-radius: 1rem; }
-        .card-premium:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--ring); }
-        .drawer-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.55); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; backdrop-filter: blur(2px); }
-        .drawer-overlay.active { opacity: 1; pointer-events: auto; }
-        .drawer {
-            position: fixed; top: 0; left: 0; z-index: 110; width: 320px; max-width: 85vw; height: 100dvh;
-            background: var(--drawer-bg); box-shadow: 10px 0 60px rgba(0,0,0,0.3); transform: translateX(-105%);
-            transition: transform 0.45s cubic-bezier(0.22,0.61,0.36,1); display: flex; flex-direction: column; padding: 24px; overflow-y: auto; border-right: 1px solid var(--border);
-        }
-        .drawer.active { transform: translateX(0); }
-        .drawer-nav-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; font-weight: 500; font-size: 1.05rem; color: var(--text); text-decoration: none; transition: all 0.2s; cursor: pointer; }
-        .drawer-nav-item:hover { background: var(--badge-bg); color: var(--accent); }
-        .banner-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94); background-size: cover; background-position: center; z-index: 0; }
-        .banner-slide.active { opacity: 1; z-index: 1; }
-        .banner-slide::after { content: ''; position: absolute; inset: 0; background: var(--banner-overlay); z-index: 1; }
-        .banner-content { position: relative; z-index: 2; }
-        .banner-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
-        .banner-dot.active { background: #f97316; border-color: #fff; width: 36px; border-radius: 20px; }
-        #chatPanel { transform-origin: bottom right; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease; transform: scale(0.85); opacity: 0; pointer-events: none; }
-        #chatPanel.show { transform: scale(1); opacity: 1; pointer-events: auto; }
-        @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.6); } 70% { box-shadow: 0 0 0 22px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
-        .pulse-ring { animation: pulseRing 2.5s infinite; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--ring); border-radius: 10px; }
-        .shimmer-border { position: relative; overflow: hidden; }
-        .shimmer-border::before { content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px; border-radius: inherit; background: linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent); background-size: 200% 100%; animation: shimmer 2.5s infinite; z-index: -1; }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @media (max-width: 640px) { .banner-dot { width: 8px; height: 8px; } .banner-dot.active { width: 24px; } }
+        :root{--bg:#fafafa;--bg-secondary:#f5f5f5;--text:#18181b;--text-secondary:#52525b;--surface:#fff;--border:#e4e4e7;--ring:#f97316;--accent:#f97316;--accent-hover:#ea580c;--glass-bg:rgba(255,255,255,0.72);--glass-border:rgba(0,0,0,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -2px rgba(0,0,0,0.05);--card-hover-shadow:0 25px 50px -12px rgba(0,0,0,0.15)}.dark{--bg:#09090b;--bg-secondary:#121212;--text:#fafafa;--text-secondary:#a1a1aa;--surface:#18181b;--border:#27272a;--ring:#fb923c;--accent:#fb923c;--accent-hover:#fdba74;--glass-bg:rgba(24,24,27,0.75);--glass-border:rgba(255,255,255,0.06);--card-shadow:0 4px 6px -1px rgba(0,0,0,0.3),0 2px 4px -2px rgba(0,0,0,0.3);--card-hover-shadow:0 25px 50px -12px rgba(249,115,22,0.15)}body{background-color:var(--bg);color:var(--text);transition:background-color 0.4s ease,color 0.4s ease;font-family:'Inter',system-ui,sans-serif;margin:0;overflow-x:hidden;line-height:1.6}.glass{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border)}.gradient-text{background:linear-gradient(135deg,#f97316,#fb923c 40%,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.card-premium{transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid var(--border);background:var(--surface);box-shadow:var(--card-shadow);border-radius:1rem}.card-premium:hover{transform:translateY(-8px);box-shadow:var(--card-hover-shadow);border-color:var(--ring)}.banner-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);background-size:cover;background-position:center;z-index:0}.banner-slide.active{opacity:1;z-index:1}.banner-slide::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);z-index:1}.banner-content{position:relative;z-index:2}.banner-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s ease;border:2px solid transparent}.banner-dot.active{background:#f97316;border-color:#fff;width:36px;border-radius:20px}
     </style>
 </head>
 <body class="antialiased">
-    <!-- Drawer overlay -->
-    <div id="drawerOverlay" class="drawer-overlay" aria-hidden="true"></div>
-    <!-- Drawer -->
-    <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
-        <div class="flex items-center justify-between mb-8">
-            <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">⚡</div>
-                <span class="text-lg font-bold gradient-text font-display">iconelectro</span>
-            </div>
-            <button id="drawerCloseBtn" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
-        </div>
-        <nav class="flex flex-col flex-1 space-y-1">
-            <a href="#home" class="drawer-nav-item" data-nav-close><i data-lucide="home"></i> Home</a>
-            <a href="#solutions" class="drawer-nav-item" data-nav-close><i data-lucide="layout-grid"></i> Solutions</a>
-            <a href="#pricing" class="drawer-nav-item" data-nav-close><i data-lucide="indian-rupee"></i> Pricing</a>
-            <a href="#calculator" class="drawer-nav-item" data-nav-close><i data-lucide="calculator"></i> Calculator</a>
-            <a href="#why-us" class="drawer-nav-item" data-nav-close><i data-lucide="award"></i> Why Us</a>
-            <a href="#testimonials" class="drawer-nav-item" data-nav-close><i data-lucide="star"></i> Reviews</a>
-            <a href="#faq" class="drawer-nav-item" data-nav-close><i data-lucide="help-circle"></i> FAQ</a>
-            <a href="#contact" class="drawer-nav-item" data-nav-close><i data-lucide="phone"></i> Contact</a>
-        </nav>
-        <div class="mt-auto pt-6 border-t" style="border-color: var(--border);">
-            <button id="themeToggleDrawer" class="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                <i data-lucide="moon" id="themeIconDrawer" class="w-5 h-5"></i> <span id="themeLabelDrawer">Dark Mode</span>
-            </button>
-            <a href="https://wa.me/919876543210?text=Hello%20iconelectro!%20I%20want%20to%20know%20more%20about%20solar%20panels." target="_blank" rel="noopener noreferrer"
-               class="flex items-center justify-center gap-2 mt-3 w-full py-3.5 rounded-xl font-semibold text-sm bg-green-500 text-white hover:bg-green-600 transition shadow-lg shadow-green-500/20">
-                <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp
-            </a>
-        </div>
-    </aside>
-
     <!-- Navbar -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
         <div class="glass mx-3 sm:mx-4 md:mx-6 lg:mx-8 mt-3 sm:mt-4 rounded-2xl px-4 sm:px-6 lg:px-8 transition-all duration-300">
             <div class="flex items-center justify-between h-14 md:h-16">
                 <div class="flex items-center gap-3">
-                    <button id="hamburgerBtn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors order-first" aria-label="Open menu"><i data-lucide="menu" class="w-5 h-5"></i></button>
                     <a href="#home" class="flex items-center gap-2.5 no-underline">
                         <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-orange-500/20">⚡</div>
                         <span class="text-xl md:text-2xl font-bold gradient-text font-display tracking-tight hidden sm:inline">iconelectro</span>
                     </a>
                 </div>
                 <nav class="hidden lg:flex items-center gap-1">
-                    <a href="#home" class="px-3 py-2 text-sm font-medium rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition">Home</a>
                     <a href="#solutions" class="px-3 py-2 text-sm font-medium rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition">Solutions</a>
                     <a href="#pricing" class="px-3 py-2 text-sm font-medium rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition">Pricing</a>
                     <a href="#calculator" class="px-3 py-2 text-sm font-medium rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition">Calculator</a>
@@ -191,41 +56,35 @@
             <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&h=1080&fit=crop&auto=format&q=80');" data-index="0"></div>
             <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1497440001374-f1e422042e2f?w=1920&h=1080&fit=crop&auto=format&q=80');" data-index="1"></div>
             <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&h=1080&fit=crop&auto=format&q=80');" data-index="2"></div>
-            <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1624397640148-949b1732bb0a?w=1920&h=1080&fit=crop&auto=format&q=80');" data-index="3"></div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-24 md:py-32">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div class="banner-content text-white" data-aos="fade-up" data-aos-duration="800">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-semibold mb-6 bg-white/15 backdrop-blur-md border border-white/20 text-white">
-                        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span></span>
-                        #1 Solar Company in Eastern India
-                    </div>
-                    <h1 id="bannerTitle" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-display text-white drop-shadow-lg">
-                        Power Your Future with <span class="text-orange-400">Smart Solar</span> Energy
-                    </h1>
-                    <p id="bannerSubtitle" class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-xl drop-shadow-md">
-                        Save up to <strong class="text-orange-300 font-semibold">80%</strong> on electricity bills with premium Tier-1 solar panels.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-5 mb-8 text-sm text-gray-200">
-                        <div class="flex items-center gap-1.5"><span class="text-yellow-400 text-base">★★★★★</span> <span class="font-semibold text-white">4.9</span> <span class="text-gray-300">(1,200+ reviews)</span></div>
-                        <div class="w-px h-4 bg-white/30 hidden sm:block"></div>
-                        <div class="flex items-center gap-1.5 font-medium text-gray-200"><i data-lucide="users" class="w-4 h-4 text-orange-400"></i> 5,000+ Happy Homes</div>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-solar-500 to-solar-600 hover:from-solar-600 hover:to-solar-700 shadow-xl shadow-solar-500/30 transition-all pulse-ring hover:scale-105"><i data-lucide="zap" class="w-4 h-4"></i> Get Free Quote</a>
-                        <a href="#calculator" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white border-2 border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm"><i data-lucide="calculator" class="w-4 h-4"></i> Calculate Savings</a>
-                    </div>
+            <div class="banner-content text-white" data-aos="fade-up" data-aos-duration="800">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-semibold mb-6 bg-white/15 backdrop-blur-md border border-white/20 text-white">
+                    <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span></span>
+                    #1 Solar Company in Eastern India
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-display text-white drop-shadow-lg">
+                    Power Your Future with <span class="text-orange-400">Smart Solar</span> Energy
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-xl drop-shadow-md">
+                    Save up to <strong class="text-orange-300 font-semibold">80%</strong> on electricity bills with premium Tier-1 solar panels.
+                </p>
+                <div class="flex flex-wrap items-center gap-5 mb-8 text-sm text-gray-200">
+                    <div class="flex items-center gap-1.5"><span class="text-yellow-400 text-base">★★★★★</span> <span class="font-semibold text-white">4.9</span> <span class="text-gray-300">(1,200+ reviews)</span></div>
+                    <div class="w-px h-4 bg-white/30 hidden sm:block"></div>
+                    <div class="flex items-center gap-1.5 font-medium text-gray-200"><i data-lucide="users" class="w-4 h-4 text-orange-400"></i> 5,000+ Happy Homes</div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-solar-500 to-solar-600 hover:from-solar-600 hover:to-solar-700 shadow-xl shadow-solar-500/30 transition-all pulse-ring hover:scale-105"><i data-lucide="zap" class="w-4 h-4"></i> Get Free Quote</a>
+                    <a href="#calculator" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white border-2 border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm"><i data-lucide="calculator" class="w-4 h-4"></i> Calculate Savings</a>
                 </div>
             </div>
         </div>
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-            <button id="bannerDot0" class="banner-dot active" data-slide="0" aria-label="Slide 1"></button>
-            <button id="bannerDot1" class="banner-dot" data-slide="1" aria-label="Slide 2"></button>
-            <button id="bannerDot2" class="banner-dot" data-slide="2" aria-label="Slide 3"></button>
-            <button id="bannerDot3" class="banner-dot" data-slide="3" aria-label="Slide 4"></button>
+            <button class="banner-dot active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="banner-dot" data-slide="1" aria-label="Slide 2"></button>
+            <button class="banner-dot" data-slide="2" aria-label="Slide 3"></button>
         </div>
-        <button id="bannerPrev" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center transition-all text-white" aria-label="Previous slide"><i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i></button>
-        <button id="bannerNext" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center transition-all text-white" aria-label="Next slide"><i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6"></i></button>
     </section>
 
     <!-- Solutions Section -->
@@ -243,8 +102,8 @@
                     <h3 class="text-2xl font-bold mb-3 font-display">Residential</h3>
                     <p class="text-zinc-500 dark:text-zinc-400 mb-4">Power your home with clean energy and reduce bills by up to 80%.</p>
                     <ul class="text-sm text-left space-y-2 text-zinc-600 dark:text-zinc-400 mb-5">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i> 1KW - 10KW Systems</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i> Government Subsidy</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> 1KW - 10KW Systems</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Government Subsidy</li>
                     </ul>
                     <a href="#contact" class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm hover:underline">Get Quote →</a>
                 </div>
@@ -254,8 +113,8 @@
                     <h3 class="text-2xl font-bold mb-3 font-display">Commercial</h3>
                     <p class="text-zinc-500 dark:text-zinc-400 mb-4">Boost your business's green credentials while cutting operational costs.</p>
                     <ul class="text-sm text-left space-y-2 text-zinc-600 dark:text-zinc-400 mb-5">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-500 flex-shrink-0"></i> 10KW - 100KW Systems</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-500 flex-shrink-0"></i> Accelerated Depreciation</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-500"></i> 10KW - 100KW Systems</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-500"></i> Accelerated Depreciation</li>
                     </ul>
                     <a href="#contact" class="text-sky-600 dark:text-sky-400 font-semibold text-sm hover:underline">Get Quote →</a>
                 </div>
@@ -265,8 +124,8 @@
                     <h3 class="text-2xl font-bold mb-3 font-display">Industrial</h3>
                     <p class="text-zinc-500 dark:text-zinc-400 mb-4">Large-scale solar plants for factories and warehouses.</p>
                     <ul class="text-sm text-left space-y-2 text-zinc-600 dark:text-zinc-400 mb-5">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-amber-500 flex-shrink-0"></i> 100KW - 1MW+ Systems</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-amber-500 flex-shrink-0"></i> Custom Engineering & EPC</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-amber-500"></i> 100KW - 1MW+ Systems</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-amber-500"></i> Custom Engineering & EPC</li>
                     </ul>
                     <a href="#contact" class="text-amber-600 dark:text-amber-400 font-semibold text-sm hover:underline">Get Quote →</a>
                 </div>
@@ -340,7 +199,7 @@
     </section>
 
     <!-- Calculator Section -->
-    <section id="calculator" class="py-20 md:py-28">
+    <section id="calculator" class="py-20 md:py-28" style="background: linear-gradient(135deg, #fff7ed, #ffedd5 50%, #fff7ed);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-up">
                 <span class="text-orange-500 font-semibold text-sm uppercase tracking-widest">Plan Your Savings</span>
@@ -353,7 +212,7 @@
                     <div class="flex flex-col sm:flex-row gap-3 mb-8">
                         <div class="relative flex-1">
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 font-medium text-lg">₹</span>
-                            <input id="billInput" type="number" placeholder="e.g. 4,000" class="w-full pl-10 pr-5 py-4 rounded-xl border-2 text-lg font-medium focus:outline-none focus:border-orange-500 transition" style="border-color: var(--border); background: var(--input-bg); color: var(--text);">
+                            <input id="billInput" type="number" placeholder="e.g. 4,000" class="w-full pl-10 pr-5 py-4 rounded-xl border-2 text-lg font-medium focus:outline-none focus:border-orange-500 transition" style="border-color: var(--border); background: var(--surface); color: var(--text);">
                         </div>
                         <button onclick="calculateSavings()" class="px-8 py-4 rounded-xl font-semibold text-lg text-white bg-gradient-to-r from-solar-500 to-solar-600 hover:from-solar-600 hover:to-solar-700 shadow-lg transition flex items-center justify-center gap-2 whitespace-nowrap active:scale-95">
                             <i data-lucide="calculator" class="w-5 h-5"></i> Calculate
@@ -383,7 +242,7 @@
     </section>
 
     <!-- Why Us Section -->
-    <section id="why-us" class="py-20 md:py-28" style="background-color: var(--section-alt-bg);">
+    <section id="why-us" class="py-20 md:py-28" style="background-color: var(--bg-secondary);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-orange-500 font-semibold text-sm uppercase tracking-widest">The iconelectro Advantage</span>
@@ -451,7 +310,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 md:py-28" style="background-color: var(--section-alt-bg);">
+    <section id="faq" class="py-20 md:py-28" style="background-color: var(--bg-secondary);">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 font-display">❓ Frequently Asked <span class="gradient-text">Questions</span></h2>
@@ -497,7 +356,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t" style="background: var(--footer-bg); border-color: var(--border);">
+    <footer class="py-12 border-t" style="background: var(--surface); border-color: var(--border);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-2.5">
@@ -511,7 +370,7 @@
 
     <!-- Floating WhatsApp Widget -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <div id="chatPanel" class="w-80 bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border p-5" style="border-color: var(--border);">
+        <div id="chatPanel" class="w-80 bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border p-5 hidden" style="border-color: var(--border);">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-2">
                     <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">⚡</div>
@@ -533,17 +392,11 @@
         <button id="chatToggleBtn" class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white shadow-xl flex items-center justify-center hover:scale-110 transition-all pulse-ring active:scale-95" aria-label="Open chat"><i data-lucide="message-circle" class="w-7 h-7"></i></button>
     </div>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script>
         (function() {
             lucide.createIcons();
             AOS.init({ duration: 800, once: true, offset: 60, disable: 'mobile' });
-
             const html = document.documentElement;
-            const drawer = document.getElementById('drawer');
-            const drawerOverlay = document.getElementById('drawerOverlay');
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const drawerCloseBtn = document.getElementById('drawerCloseBtn');
             const chatToggleBtn = document.getElementById('chatToggleBtn');
             const chatPanel = document.getElementById('chatPanel');
             const billInput = document.getElementById('billInput');
@@ -555,30 +408,16 @@
             const currentYearEl = document.getElementById('currentYear');
             if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
 
-            // Drawer
-            function openDrawer() { drawer.classList.add('active'); drawerOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
-            function closeDrawer() { drawer.classList.remove('active'); drawerOverlay.classList.remove('active'); document.body.style.overflow = ''; }
-            hamburgerBtn.addEventListener('click', openDrawer);
-            drawerCloseBtn.addEventListener('click', closeDrawer);
-            drawerOverlay.addEventListener('click', closeDrawer);
-            document.querySelectorAll('[data-nav-close]').forEach(link => link.addEventListener('click', () => setTimeout(closeDrawer, 150)));
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('active')) closeDrawer(); });
-
             // Theme toggle
-            const themeIconsDesktop = document.getElementById('themeIconDesktop');
-            const themeIconsDrawer = document.getElementById('themeIconDrawer');
-            const themeLabelDrawer = document.getElementById('themeLabelDrawer');
-            const allThemeIcons = [themeIconsDesktop, themeIconsDrawer].filter(Boolean);
+            const themeIconDesktop = document.getElementById('themeIconDesktop');
             function setTheme(isDark) {
                 if (isDark) {
                     html.classList.add('dark'); html.classList.remove('light'); html.setAttribute('data-theme', 'dark');
-                    allThemeIcons.forEach(icon => { if (icon) icon.setAttribute('data-lucide', 'sun'); });
-                    if (themeLabelDrawer) themeLabelDrawer.textContent = 'Light Mode';
+                    if (themeIconDesktop) themeIconDesktop.setAttribute('data-lucide', 'sun');
                     localStorage.setItem('iconelectro-theme', 'dark');
                 } else {
                     html.classList.remove('dark'); html.classList.add('light'); html.setAttribute('data-theme', 'light');
-                    allThemeIcons.forEach(icon => { if (icon) icon.setAttribute('data-lucide', 'moon'); });
-                    if (themeLabelDrawer) themeLabelDrawer.textContent = 'Dark Mode';
+                    if (themeIconDesktop) themeIconDesktop.setAttribute('data-lucide', 'moon');
                     localStorage.setItem('iconelectro-theme', 'light');
                 }
                 lucide.createIcons();
@@ -588,13 +427,12 @@
             else if (savedTheme === 'light') setTheme(false);
             else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
             document.getElementById('themeToggleDesktop')?.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
-            document.getElementById('themeToggleDrawer')?.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
 
             // Chat panel
-            function openChatPanel() { chatPanel.classList.add('show'); }
-            function closeChatPanel() { chatPanel.classList.remove('show'); }
-            chatToggleBtn.addEventListener('click', () => { chatPanel.classList.contains('show') ? closeChatPanel() : openChatPanel(); });
-            document.addEventListener('click', (e) => { if (chatPanel.classList.contains('show') && !chatPanel.contains(e.target) && !chatToggleBtn.contains(e.target)) closeChatPanel(); });
+            function openChatPanel() { chatPanel.classList.remove('hidden'); }
+            function closeChatPanel() { chatPanel.classList.add('hidden'); }
+            chatToggleBtn.addEventListener('click', () => { chatPanel.classList.contains('hidden') ? openChatPanel() : closeChatPanel(); });
+            document.addEventListener('click', (e) => { if (!chatPanel.classList.contains('hidden') && !chatPanel.contains(e.target) && !chatToggleBtn.contains(e.target)) closeChatPanel(); });
             window.closeChatPanel = closeChatPanel;
             window.handleChatOption = function(option) {
                 closeChatPanel();
@@ -627,12 +465,9 @@
             // Banner slider
             const bannerSlides = document.querySelectorAll('.banner-slide');
             const bannerDots = document.querySelectorAll('.banner-dot');
-            const bannerPrev = document.getElementById('bannerPrev');
-            const bannerNext = document.getElementById('bannerNext');
             let currentSlide = 0;
             const totalSlides = bannerSlides.length;
             let autoSlideInterval;
-            const SLIDE_INTERVAL = 5000;
             function goToSlide(index) {
                 if (index === currentSlide) return;
                 if (index < 0) index = totalSlides - 1;
@@ -645,17 +480,13 @@
                 resetAutoSlide();
             }
             function nextSlide() { goToSlide(currentSlide + 1); }
-            function prevSlide() { goToSlide(currentSlide - 1); }
-            function resetAutoSlide() { clearInterval(autoSlideInterval); autoSlideInterval = setInterval(nextSlide, SLIDE_INTERVAL); }
-            bannerPrev.addEventListener('click', prevSlide);
-            bannerNext.addEventListener('click', nextSlide);
+            function resetAutoSlide() { clearInterval(autoSlideInterval); autoSlideInterval = setInterval(nextSlide, 5000); }
             bannerDots.forEach(dot => { dot.addEventListener('click', () => { goToSlide(parseInt(dot.dataset.slide)); }); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
-            autoSlideInterval = setInterval(nextSlide, SLIDE_INTERVAL);
+            autoSlideInterval = setInterval(nextSlide, 5000);
             document.getElementById('home').addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-            document.getElementById('home').addEventListener('mouseleave', () => { autoSlideInterval = setInterval(nextSlide, SLIDE_INTERVAL); });
+            document.getElementById('home').addEventListener('mouseleave', () => { autoSlideInterval = setInterval(nextSlide, 5000); });
 
-            // Smooth scroll for anchor links
+            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');

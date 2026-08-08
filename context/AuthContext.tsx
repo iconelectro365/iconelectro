@@ -35,7 +35,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     router.push('/login');
   };
 
-  // Protect admin routes (client-side)
   useEffect(() => {
     if (pathname.startsWith('/admin') && !token) {
       router.push('/login');
